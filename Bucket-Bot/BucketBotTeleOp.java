@@ -73,9 +73,6 @@ public class BucketBotTeleOp extends LinearOpMode {
                     }
                 }
             }
-            else{
-                stopMove();
-            }
             //trying to rotate
             if (Math.abs(gamepad1.right_stick_x) > 0.06){
                 if (gamepad1.right_stick_x > 0) {
