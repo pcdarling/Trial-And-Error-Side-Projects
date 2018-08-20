@@ -1,1 +1,1 @@
-Contains all side projects Trial and Error starts on.
+Contains all side projects for the Trial and Error robotics team.
