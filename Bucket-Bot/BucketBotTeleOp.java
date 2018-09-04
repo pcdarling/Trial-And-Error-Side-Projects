@@ -37,7 +37,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
-@TeleOp(name="Gray Bucket Bot", group="Linear Opmode")
+@TeleOp(name="Bucket Bot", group="Linear Opmode")
 public class BucketBotTeleOp extends LinearOpMode {
 
     BucketBotHardware robot = new BucketBotHardware();
@@ -51,8 +51,10 @@ public class BucketBotTeleOp extends LinearOpMode {
         waitForStart();
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
-            //trying to move
-            if (Math.abs(gamepad1.left_stick_y) > 0.06){
+            // trying to move
+            // Preston: This if statement could definitely be put into a function.
+            if (Math.abs(gamepad1.left_stick_y) > 0.06 ||
+               Math.abs(gamepad1.left_stick_x) > 0.06){
                 if (gamepad1.left_stick_y > 0 ) {
                     robot.motors[1].setPower(gamepad1.left_stick_y);
                     robot.motors[3].setPower(gamepad1.left_stick_y);
@@ -74,7 +76,7 @@ public class BucketBotTeleOp extends LinearOpMode {
                 }
             }
             //trying to rotate
-            if (Math.abs(gamepad1.right_stick_x) > 0.06){
+            else if (Math.abs(gamepad1.right_stick_x) > 0.06){
                 if (gamepad1.right_stick_x > 0) {
                     robot.motors[0].setPower(-gamepad1.right_stick_x);
                     robot.motors[2].setPower(gamepad1.right_stick_x);
@@ -84,7 +86,7 @@ public class BucketBotTeleOp extends LinearOpMode {
                     robot.motors[2].setPower(-gamepad1.right_stick_x);
                 }
             }
-            else{
+            else {
                 stopMove();
             }
             // Do robot things
